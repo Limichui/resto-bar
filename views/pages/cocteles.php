@@ -120,6 +120,7 @@ $idMenu=5;
     <script src="<?php echo(SERVERURL);?>assets/lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="<?php echo(SERVERURL);?>assets/lib/fontawesome-free-6.3.0/all.js"></script>
     <!-- Template Javascript -->
+    <script src="<?php echo (SERVERURL); ?>assets/js/languages.js"></script>
     <script src="<?php echo(SERVERURL);?>assets/js/main.js"></script>
 </body>
 

@@ -62,7 +62,7 @@ $idMenu=4;
                     <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
                         <li class="nav-item">
                             <a class="d-flex align-items-center text-start mx-3 me-0 pb-3 active" data-bs-toggle="pill" href="#tab-e1">
-                                <img width="35" height="35" src="<?php echo(SERVERURL);?>assets/img/iconos/plato-frio.svg"></img>
+                                <img width="35" height="35" src="<?php echo(SERVERURL);?>assets/img/iconos/plato-huevos.svg"></img>
                                 <div class="ps-3">
                                     <h6 class="mt-n1 mb-0">Aperitivos</h6>
                                 </div>
@@ -458,7 +458,7 @@ $idMenu=4;
                             <div class="row g-4">
                                 <!-- Begin - Menú Pizzas-->
                                 <?php
-	                            $menu=ControladorFormularios::ctrListarProductosWeb(6,3);
+                                $menu=ControladorFormularios::ctrListarProductosWeb(6,3);
                                 $cade="";
                                 foreach ($menu as $key => $value) {
                                     if($value['imagen']==""){
@@ -515,6 +515,7 @@ $idMenu=4;
     <script src="<?php echo(SERVERURL);?>assets/lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="<?php echo(SERVERURL);?>assets/lib/fontawesome-free-6.3.0/all.js"></script>
     <!-- Template Javascript -->
+    <script src="<?php echo (SERVERURL); ?>assets/js/languages.js"></script>
     <script src="<?php echo(SERVERURL);?>assets/js/main.js"></script>
 </body>
 

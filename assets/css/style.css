@@ -480,3 +480,16 @@
 .logo {
     max-width: 90px;
 }
+
+/* Flags*/
+.dropdown-item img {
+    width: 20px;
+    height: 15px;
+    margin-right: 8px;
+}
+
+.dropdown-toggle img {
+    width: 20px;
+    height: 15px;
+    margin-right: 8px;
+}
