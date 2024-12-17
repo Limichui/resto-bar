@@ -32,4 +32,11 @@ class ControladorFormularios{
 		$respuesta = ModeloFormularios::mdlListarDetalleProductos($idProducto);
 		return($respuesta);
 	}
+	/*=========================================================
+	Listar idiomas
+	=========================================================*/
+	static public function ctrListarIdiomas(){		
+		$respuesta = ModeloFormularios::mdlListarIdiomas();
+		return($respuesta);
+	}
 }

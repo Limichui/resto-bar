@@ -44,4 +44,12 @@ class ModeloFormularios{
 		$stmt->execute();
 		return $stmt -> fetchAll();	
 	}
+	/*=========================================================
+	Listar idiomas
+	=========================================================*/
+	static public function mdlListarIdiomas(){		
+		$stmt = Conexion::conectar()->prepare("SELECT id, imagen, idioma FROM idiomas");
+		$stmt->execute();
+		return $stmt -> fetchAll();	
+	}
 }

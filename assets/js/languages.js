@@ -34,4 +34,4 @@ menuItems.forEach((item) => {
 });
 
 // Inicializar el dropdown con Español seleccionado
-updateDropdown("Español", "https://flagcdn.com/w40/es.png");
+updateDropdown("Español", "assets/img/flags/es.png");

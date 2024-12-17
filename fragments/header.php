@@ -17,9 +17,26 @@
 			$cade.="<a href='".$value['link']."' class='nav-item nav-link'>".$value['opcion']."</a>";
 		}
 	}
+	$idiomas=ControladorFormularios::ctrListarIdiomas();
+	$flag = 0;
+	$cade.="<div class='nav-item dropdown'>";
+	foreach ($idiomas as $key => $value) {
+		if($flag==0){
+			$cade.="<a href='#' class='nav-link dropdown-toggle'  id='languageDropdown' data-bs-toggle='dropdown'>
+					<img src='assets/img/flags/".$value['imagen']."' alt='".$value['idioma']."'> ".$value['idioma']."
+				</a>
+				<div class='dropdown-menu m-0' id='languageMenu' aria-labelledby='languageDropdown'>";
+		}
+		$cade .= "<a class='dropdown-item' href='#' data-language='".$value['idioma']."' data-flag='assets/img/flags/".$value['imagen']."'>
+                <img src='assets/img/flags/".$value['imagen']."' alt='".$value['idioma']."'> ".$value['idioma']."
+            </a>";
+		$flag++;
+	}
+	$cade.= "</div></div>";
+	/*
 	$cade.="<div class='nav-item dropdown'>
 				<a href='#' class='nav-link dropdown-toggle'  id='languageDropdown' data-bs-toggle='dropdown'>
-					<img src='assets/img//es.png' alt='Español'> Español
+					<img src='assets/img/flags/es.png' alt='Español'> Español
 				</a>
 				<div class='dropdown-menu m-0' id='languageMenu' aria-labelledby='languageDropdown'>
 					<a class='dropdown-item' href='#' data-language='Español' data-flag='https://flagcdn.com/w40/es.png'>
@@ -35,7 +52,7 @@
 						<img src='assets/img/flags/ad.png' alt='Català'> Català
 					</a>
 				</div>
-			</div>";
+			</div>";*/
 	$cade.= "</div></div>";
 	echo($cade);
 	?>
