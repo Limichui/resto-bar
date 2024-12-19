@@ -5,7 +5,7 @@ class ModeloFormularios{
 	Listar menú
 	=========================================================*/
 	static public function mdlListarMenu(){			
-		$stmt = Conexion::conectar()->prepare("SELECT id, opcion, link, orden
+		$stmt = Conexion::conectar()->prepare("SELECT id, opcion_esp, opcion_eng, opcion_fra, opcion_cat, link, orden
 			FROM menu_opciones WHERE (estado=1) ORDER BY orden ASC");
 		$stmt->execute();
 		return $stmt -> fetchAll();		

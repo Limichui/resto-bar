@@ -1,8 +1,12 @@
+<?php
+//session_destroy();
+?>
+<input class="session" type="text" id="txt-lang" value="<?php echo($_SESSION['lang']);?>">
+<input class="session" type="text" id="txt-flag" value="<?php echo($_SESSION['flag']);?>">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
 	<a href="./" class="navbar-brand p-0">
 		<img src="assets/img/logo.png" alt="Logotipo" /> 
 	</a>
-
 	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
 		<span class="fa fa-bars"></span>
 	</button>
@@ -11,10 +15,14 @@
 	$cade = "<div class='collapse navbar-collapse' id='navbarCollapse'>
 				<div class='navbar-nav ms-auto py-0 pe-4'>";
 	foreach ($menu as $key => $value) {
+		if($_SESSION['lang']==='English') $opcion=$value['opcion_eng'];
+		else if($_SESSION['lang']==='Français') $opcion=$value['opcion_fra'];
+		else if($_SESSION['lang']==='Català') $opcion=$value['opcion_cat'];
+		else $opcion=$value['opcion_esp'];
 		if($value['id']==$idMenu){
-			$cade.="<a href='".$value['link']."' class='nav-item nav-link active'>".$value['opcion']."</a>";
+			$cade.="<a href='".$value['link']."' class='nav-item nav-link active'>".$opcion."</a>";
 		}else{
-			$cade.="<a href='".$value['link']."' class='nav-item nav-link'>".$value['opcion']."</a>";
+			$cade.="<a href='".$value['link']."' class='nav-item nav-link'>".$opcion."</a>";
 		}
 	}
 	$idiomas=ControladorFormularios::ctrListarIdiomas();
@@ -23,7 +31,7 @@
 	foreach ($idiomas as $key => $value) {
 		if($flag==0){
 			$cade.="<a href='#' class='nav-link dropdown-toggle'  id='languageDropdown' data-bs-toggle='dropdown'>
-					<img src='assets/img/flags/".$value['imagen']."' alt='".$value['idioma']."'> ".$value['idioma']."
+					<img src='".$_SESSION['flag']."' alt='".$value['idioma']."'> ".$value['idioma']."
 				</a>
 				<div class='dropdown-menu m-0' id='languageMenu' aria-labelledby='languageDropdown'>";
 		}

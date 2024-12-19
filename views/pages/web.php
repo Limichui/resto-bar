@@ -1,4 +1,5 @@
 <?php
+//session_start();
 include "models/config.php";
 $idMenu = 1;
 ?>
@@ -84,6 +85,7 @@ $idMenu = 1;
                     <div class="col-lg-6">
                         <h5 class="section-title ff-secondary text-start text-primary fw-normal">Sobre Nosotros</h5>
                         <h1 class="mb-4">Bienvenido a Robert's</h1>
+                        <h1 class="mb-4"><?php echo('*'.$_SESSION['lang'].'*')?></h1>
                         <p class="mb-4">
                             Durante todos estos años, gracias al esfuerzo e ilusión, hemos ido evolucionando y profesionalizándonos hasta convertirnos en un referente del sector de la gastronomía. Siempre marcado por nuestro servicio y el buen sabor de muestras comídas.
                         </p>

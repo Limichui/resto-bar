@@ -493,3 +493,8 @@
     height: 15px;
     margin-right: 8px;
 }
+
+/* Session */
+.session{
+    display: none;
+}
