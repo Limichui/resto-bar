@@ -52,4 +52,24 @@ class ModeloFormularios{
 		$stmt->execute();
 		return $stmt -> fetchAll();	
 	}
+	/*=========================================================
+	Listar títulos footer
+	=========================================================*/
+	static public function mdlListarTitulosFooter(){		
+		$stmt = Conexion::conectar()->prepare("SELECT id, titulo_esp, titulo_eng, titulo_fra, titulo_cat FROM sys_titulos_footer");
+		$stmt->execute();
+		return $stmt -> fetchAll();	
+	}
+	/*=========================================================
+	Listar detalle título footer
+	=========================================================*/
+	static public function mdlListarDetalleTituloFooter($id){		
+		$stmt = Conexion::conectar()->prepare("SELECT id, detalle1_esp, detalle1_eng, detalle1_fra, detalle1_cat, detalle2_esp, detalle2_eng, detalle2_fra, detalle2_cat 
+			FROM sys_detalle_titulos_footer
+			WHERE titulo_footer_id=:titulo_id
+			ORDER BY id ASC");
+		$stmt->bindParam(":titulo_id", $id, PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt -> fetchAll();	
+	}
 }

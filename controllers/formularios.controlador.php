@@ -39,4 +39,18 @@ class ControladorFormularios{
 		$respuesta = ModeloFormularios::mdlListarIdiomas();
 		return($respuesta);
 	}
+	/*=========================================================
+	Listar títulos footer
+	=========================================================*/
+	static public function ctrListarTitulosFooter(){		
+		$respuesta = ModeloFormularios::mdlListarTitulosFooter();
+		return($respuesta);
+	}
+	/*=========================================================
+	Listar detalle título footer
+	=========================================================*/
+	static public function ctrListarDetalleTituloFooter($id){		
+		$respuesta = ModeloFormularios::mdlListarDetalleTituloFooter($id);
+		return($respuesta);
+	}
 }

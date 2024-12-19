@@ -43,7 +43,7 @@ menuItems.forEach((item) => {
     //alert(`Has seleccionado: ${selectedLanguage}`);
     // Cambiar el idioma llamando a la función
     updateLanguage(selectedLanguage,selectedFlag);
-    alert('flag: '+selectedFlag);
+    //alert('flag: '+selectedFlag);
     // Actualizar el dropdown y ocultar el idioma seleccionado
     updateDropdown(selectedLanguage, selectedFlag);
   });
