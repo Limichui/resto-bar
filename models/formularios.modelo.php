@@ -72,4 +72,14 @@ class ModeloFormularios{
 		$stmt->execute();
 		return $stmt -> fetchAll();	
 	}
+	/*=========================================================
+	Listar derechos reservados
+	=========================================================*/
+	static public function mdlListarDerechosReservados(){		
+		$stmt = Conexion::conectar()->prepare("SELECT anio, dominio, derechos_esp, derechos_eng, derechos_fra, derechos_cat, 
+				desarrollado_esp, desarrollado_eng, desarrollado_fra, desarrollado_cat,url 
+				FROM sys_derechos_reservados");
+		$stmt->execute();
+		return $stmt -> fetchAll();	
+	}
 }

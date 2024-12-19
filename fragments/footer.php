@@ -50,15 +50,36 @@
 		echo($cade);
 		?>
 	</div>
+	<?php
+		$listDerechosReservados=ControladorFormularios::ctrListarDerechosReservados();
+		foreach ($listDerechosReservados as $key => $value) {
+			$anio=$value['anio'];
+			$dominio=$value['dominio'];
+			$url=$value['url'];
+			if($_SESSION['lang']==='English'){
+				$derechos=$value['derechos_eng'];
+				$desarrollado=$value['desarrollado_eng'];
+			}else if($_SESSION['lang']==='Français'){
+				$derechos=$value['derechos_fra'];
+				$desarrollado=$value['desarrollado_fra'];
+			}else if($_SESSION['lang']==='Català'){
+				$derechos=$value['derechos_cat'];
+				$desarrollado=$value['desarrollado_cat'];
+			}else{
+				$derechos=$value['derechos_esp'];
+				$desarrollado=$value['desarrollado_esp'];
+			}
+		}
+	?>
 	<div class="container">
 		<div class="copyright">
 			<div class="row">
 				<div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-				Copyright  &copy;2024 <a class="border-bottom" href="./">robertsresto.com</a>, todos los derechos reservados. 
+				Copyright  &copy;<?php echo($anio);?> <a class="border-bottom" href="./"><?php echo($dominio);?></a>, <?php echo($derechos);?>. 
 				</div>
 				<div class="col-md-6 text-center text-md-end">
 					<div class="footer-menu">
-						Desarrollado por:<a class="border-bottom" href="https://limbertolmos.com"> Limbert Olmos</a>
+						<?php echo($desarrollado);?>:<a class="border-bottom" href="<?php echo($url);?>"> Limbert Olmos M.</a>
 					</div>
 				</div>
 			</div>

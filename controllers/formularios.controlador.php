@@ -53,4 +53,11 @@ class ControladorFormularios{
 		$respuesta = ModeloFormularios::mdlListarDetalleTituloFooter($id);
 		return($respuesta);
 	}
+	/*=========================================================
+	Listar derechos reservados
+	=========================================================*/
+	static public function ctrListarDerechosReservados(){		
+		$respuesta = ModeloFormularios::mdlListarDerechosReservados();
+		return($respuesta);
+	}
 }
