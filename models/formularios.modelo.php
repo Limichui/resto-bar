@@ -127,4 +127,30 @@ class ModeloFormularios{
 		$stmt->execute();
 		return $stmt -> fetchAll();	
 	}
+	/*=========================================================
+	Filtrar datos contacto
+	=========================================================*/
+	static public function mdlFiltrarDatosContacto($id){		
+		$stmt = Conexion::conectar()->prepare("SELECT id, titulo_esp, titulo_eng, titulo_fra, titulo_cat, 
+				detalle1_esp, detalle1_eng, detalle1_fra, detalle1_cat, detalle2_esp, detalle2_eng, detalle2_fra, detalle2_cat
+				FROM sys_detalle_titulos_footer
+				WHERE titulo_footer_id=:titulo_footer_id
+				ORDER BY id ASC");
+		$stmt->bindParam(":titulo_footer_id", $id, PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt -> fetchAll();	
+	}
+	/*=========================================================
+	Filtrar label de fromulario de contacto
+	=========================================================*/
+	static public function mdlFiltrarLabelFromContacto(){		
+		$stmt = Conexion::conectar()->prepare("SELECT nombre_esp, nombre_eng, nombre_fra, nombre_cat,
+				email_esp, email_eng, email_fra, email_cat,
+				asunto_esp, asunto_eng, asunto_fra, asunto_cat,
+				mensaje_esp, mensaje_eng, mensaje_fra, mensaje_cat,
+				boton_esp, boton_eng, boton_fra, boton_cat 
+				FROM  sys_form_contacto_web");
+		$stmt->execute();
+		return $stmt -> fetchAll();	
+	}
 }

@@ -63,20 +63,36 @@ $idMenu=6;
                     <h1 class="mb-5"></h1>
                 </div>
                 <div class="row g-4">
-                    <div class="col-12">s
+                    <div class="col-12">
                         <div class="row gy-4">
-                            <div class="col-md-4">
-                                <h5 class="section-title ff-secondary fw-normal text-start text-primary">Dirección</h5>
-                                <p><i class="fa fa-map-marker-alt text-primary me-2"></i>Once de septiembre 2, Hospitalet de Llobregat, Barcelona, España</p>
-                            </div>
-                            <div class="col-md-4">
-                                <h5 class="section-title ff-secondary fw-normal text-start text-primary">Teléfono</h5>
-                                <p><i class="fa fa-phone-alt text-primary me-2"></i>+34 674 56 40 92</p>
-                            </div>
-                            <div class="col-md-4">
-                                <h5 class="section-title ff-secondary fw-normal text-start text-primary">Whatsapp</h5>
-                                <p><i class="fab fa-whatsapp text-primary me-2"></i>+34 674 56 40 92</p>
-                            </div>
+                        <?php
+                            $cade="";
+                            $datosContacto = ControladorFormularios::ctrFiltrarDatosContacto(1);
+                            foreach ($datosContacto as $key => $value) {
+                                if($_SESSION['lang']==='English'){
+                                    $titulo=$value['titulo_eng'];
+                                    $icono=$value['detalle1_eng'];
+                                    $detalle=$value['detalle2_eng'];
+                                }else if($_SESSION['lang']==='Français'){
+                                    $titulo=$value['titulo_fra'];
+                                    $icono=$value['detalle1_fra'];
+                                    $detalle=$value['detalle2_fra'];
+                                }else if($_SESSION['lang']==='Català'){
+                                    $titulo=$value['titulo_cat'];
+                                    $icono=$value['detalle1_cat'];
+                                    $detalle=$value['detalle2_cat'];
+                                }else{
+                                    $titulo=$value['titulo_esp'];
+                                    $icono=$value['detalle1_esp'];
+                                    $detalle=$value['detalle2_esp'];
+                                }
+                                $cade.="<div class='col-md-4'>
+                                            <h5 class='section-title ff-secondary fw-normal text-start text-primary'>".$titulo."</h5>
+                                            <p><i class='".$icono."'></i>".$detalle."</p>
+                                        </div>";
+                            }
+                            echo($cade);
+                            ?>
                         </div>
                     </div>
                     <div class="col-md-6 wow fadeIn" data-wow-delay="0.1s">
@@ -86,36 +102,66 @@ $idMenu=6;
                             tabindex="0"></iframe>
                             
                     </div>
+                    <?php
+                    $etiquetasFromLabel = ControladorFormularios::ctrFiltrarLabelFromContacto();
+                    foreach ($etiquetasFromLabel as $key => $value) {
+                        if($_SESSION['lang']==='English'){
+                            $nombre=$value['nombre_eng'];
+                            $email=$value['email_eng'];
+                            $asunto=$value['asunto_eng'];
+                            $mensaje=$value['mensaje_eng'];
+                            $boton=$value['boton_eng'];
+                        }else if($_SESSION['lang']==='Français'){
+                            $nombre=$value['nombre_fra'];
+                            $email=$value['email_fra'];
+                            $asunto=$value['asunto_fra'];
+                            $mensaje=$value['mensaje_fra'];
+                            $boton=$value['boton_fra'];
+                        }else if($_SESSION['lang']==='Català'){
+                            $nombre=$value['nombre_cat'];
+                            $email=$value['email_cat'];
+                            $asunto=$value['asunto_cat'];
+                            $mensaje=$value['mensaje_cat'];
+                            $boton=$value['boton_cat'];
+                        }else{
+                            $nombre=$value['nombre_esp'];
+                            $email=$value['email_esp'];
+                            $asunto=$value['asunto_esp'];
+                            $mensaje=$value['mensaje_esp'];
+                            $boton=$value['boton_esp'];
+                        }
+                    }
+                    ?>
                     <div class="col-md-6">
                         <div class="wow fadeInUp" data-wow-delay="0.2s">
                             <form>
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="txtNombre" placeholder="Nombre Completo">
-                                            <label for="name">Nombre Completo</label>
+                                            <input type="text" class="form-control" id="txtNombre" placeholder="<?php echo($nombre);?>" required>
+                                            <label for="name"><?php echo($nombre);?></label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="email" class="form-control" id="txtEmail" placeholder="Correo Electrónico">
-                                            <label for="email">Correo Electrónico</label>
+                                            <input type="email" class="form-control" id="txtEmail" placeholder="<?php echo($email);?>" required>
+                                            <label for="email"><?php echo($email);?></label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="subject" placeholder="Asunto">
-                                            <label for="subject">Asunto</label>
+                                            <input type="text" class="form-control" id="subject" placeholder="<?php echo($asunto);?>" required>
+                                            <label for="subject"><?php echo($asunto);?></label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <textarea class="form-control" placeholder="Deja un mensaje aquí" id="Mensaje" style="height: 150px"></textarea>
-                                            <label for="message">Mensaje</label>
+                                            <textarea class="form-control" placeholder="<?php echo($mensaje);?>" id="Mensaje" style="height: 150px" required></textarea>
+                                            <label for="message"><?php echo($mensaje);?></label>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">Enviar Mensaje</button>
+                                        <button class="btn btn-primary w-100 py-3" type="submit"><?php echo($boton);?></button>
                                     </div>
                                 </div>
                             </form>

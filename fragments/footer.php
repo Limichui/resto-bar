@@ -36,10 +36,12 @@
 								<p>".$detalle2."</p>";
 				}else{
 					$subCade="<p>".$detalle1."</p>
+							<form>
 							<div class='position-relative mx-auto' style='max-width: 400px;'>
-								<input class='form-control border-primary w-100 py-3 ps-4 pe-5' type='text' placeholder=''>
-								<button type='button' class='btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2'>".$detalle2."</button>
-							</div>";
+								<input class='form-control border-primary w-100 py-3 ps-4 pe-5' type='email' placeholder='' required>
+								<button type='submit' class='btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2'>".$detalle2."</button>
+							</div>
+							</form>";
 				}
 			}
 			$cade.=$subCade;

@@ -120,8 +120,8 @@ $idMenu = 1;
                             $cade.="<p class='mb-4'>".$parrafoSub."</p>";
                         }
                         echo($cade);
-                        $experiencia = ControladorFormularios::ctrFiltrarExperiencia($idMenu);
-                        foreach ($experiencia as $key => $value) {
+                        $experiencias = ControladorFormularios::ctrFiltrarExperiencia($idMenu);
+                        foreach ($experiencias as $key => $value) {
                             $anios = $parrafo=$value['cantidad'];
                             if($_SESSION['lang']==='English'){
                                 $detalle=$value['detalle_eng'];

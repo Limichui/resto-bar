@@ -88,6 +88,19 @@ class ControladorFormularios{
 		$respuesta = ModeloFormularios::mdlListarParrafosSubtitulos($id);
 		return($respuesta);
 	}
-
+	/*=========================================================
+	Filtrar datos contacto
+	=========================================================*/
+	static public function ctrFiltrarDatosContacto($id){		
+		$respuesta = ModeloFormularios::mdlFiltrarDatosContacto($id);
+		return($respuesta);
+	}
+	/*=========================================================
+	Filtrar label de fromulario de contacto
+	=========================================================*/
+	static public function ctrFiltrarLabelFromContacto(){		
+		$respuesta = ModeloFormularios::mdlFiltrarLabelFromContacto();
+		return($respuesta);
+	}
 	
 }
