@@ -67,4 +67,27 @@ class ControladorFormularios{
 		$respuesta = ModeloFormularios::mdlFiltrarInicioCabecera($id);
 		return($respuesta);
 	}
+	/*=========================================================
+	Listar Subtitulos
+	=========================================================*/
+	static public function ctrListarSubTitulos($id){		
+		$respuesta = ModeloFormularios::mdlListarSubTitulos($id);
+		return($respuesta);
+	}
+	/*=========================================================
+	Filtrar experiencia
+	=========================================================*/
+	static public function ctrFiltrarExperiencia($id){		
+		$respuesta = ModeloFormularios::mdlFiltrarExperiencia($id);
+		return($respuesta);
+	}
+	/*=========================================================
+	Listar parrafos de subtitulos
+	=========================================================*/
+	static public function ctrListarParrafosSubtitulos($id){		
+		$respuesta = ModeloFormularios::mdlListarParrafosSubtitulos($id);
+		return($respuesta);
+	}
+
+	
 }

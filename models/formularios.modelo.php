@@ -87,9 +87,43 @@ class ModeloFormularios{
 	=========================================================*/
 	static public function mdlFiltrarInicioCabecera($id){		
 		$stmt = Conexion::conectar()->prepare("SELECT titulo_esp, titulo_eng, titulo_fra, titulo_cat, parrafo_esp, parrafo_eng, parrafo_fra, parrafo_cat
-				FROM sys_cabecera
+				FROM cabeceras
 				WHERE menu_opcion_id=:menu_opcion_id");
 		$stmt->bindParam(":menu_opcion_id", $id, PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt -> fetchAll();	
+	}
+	/*=========================================================
+	Listar Subtitulos
+	=========================================================*/
+	static public function mdlListarSubTitulos($id){		
+		$stmt = Conexion::conectar()->prepare("SELECT id, subtitulo_esp, subtitulo_eng, subtitulo_fra, subtitulo_cat, detalle_esp, detalle_eng, detalle_fra, detalle_cat
+				FROM subtitulos_paginas
+				WHERE menu_opcion_id=:menu_opcion_id
+				ORDER BY id ASC");
+		$stmt->bindParam(":menu_opcion_id", $id, PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt -> fetchAll();	
+	}
+	/*=========================================================
+	Filtrar experiencia
+	=========================================================*/
+	static public function mdlFiltrarExperiencia($id){		
+		$stmt = Conexion::conectar()->prepare("SELECT cantidad, detalle_esp, detalle_eng, detalle_fra, detalle_cat, experiencia_esp, experiencia_eng, experiencia_fra, experiencia_cat
+				FROM experiencia
+				WHERE subtitulo_id=:subtitulo_id");
+		$stmt->bindParam(":subtitulo_id", $id, PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt -> fetchAll();	
+	}
+	/*=========================================================
+	Listar parrafos de subtitulos
+	=========================================================*/
+	static public function mdlListarParrafosSubtitulos($id){		
+		$stmt = Conexion::conectar()->prepare("SELECT id, parrafo_esp, parrafo_eng, parrafo_fra, parrafo_cat
+				FROM parrafos_subtitulos_paginas
+				WHERE subtitulo_pagina_id=:subtitulo_pagina_id");
+		$stmt->bindParam(":subtitulo_pagina_id", $id, PDO::PARAM_INT);
 		$stmt->execute();
 		return $stmt -> fetchAll();	
 	}

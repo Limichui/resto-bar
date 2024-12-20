@@ -47,14 +47,23 @@ $idMenu=6;
         </div>
         <!-- Navbar & Hero End -->
         <!-- Contact Start -->
+        <?php
+        $subtitulos = ControladorFormularios::ctrListarSubTitulos($idMenu);
+        foreach ($subtitulos as $key => $value) {
+                if($_SESSION['lang']==='English') $subtitulo=$value['subtitulo_eng'];
+                else if($_SESSION['lang']==='Français') $subtitulo=$value['subtitulo_fra'];
+                else if($_SESSION['lang']==='Català') $subtitulo=$value['subtitulo_cat'];
+                else $subtitulo=$value['subtitulo_esp'];
+        }
+        ?>
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Contactenos</h5>
+                    <h5 class="section-title ff-secondary text-center text-primary fw-normal"><?php echo($subtitulo);?></h5>
                     <h1 class="mb-5"></h1>
                 </div>
                 <div class="row g-4">
-                    <div class="col-12">
+                    <div class="col-12">s
                         <div class="row gy-4">
                             <div class="col-md-4">
                                 <h5 class="section-title ff-secondary fw-normal text-start text-primary">Dirección</h5>

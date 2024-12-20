@@ -47,6 +47,15 @@ $idMenu=3;
         </div>
         <!-- Navbar & Hero End -->
         <!-- Menu Start -->
+        <?php
+        $subtitulos = ControladorFormularios::ctrListarSubTitulos($idMenu);
+        foreach ($subtitulos as $key => $value) {
+                if($_SESSION['lang']==='English') $subtitulo=$value['subtitulo_eng'];
+                else if($_SESSION['lang']==='Français') $subtitulo=$value['subtitulo_fra'];
+                else if($_SESSION['lang']==='Català') $subtitulo=$value['subtitulo_cat'];
+                else $subtitulo=$value['subtitulo_esp'];
+        }
+        ?>
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -93,7 +102,7 @@ $idMenu=3;
                             <div class="row g-4">
                                 <!-- Begin - Menú primeros platos -->
                                 <?php
-	                            $menu=ControladorFormularios::ctrListarProductosWeb(2,1);
+                                $menu=ControladorFormularios::ctrListarProductosWeb(2,1);
                                 $cade="";
                                 foreach ($menu as $key => $value) {
                                     if($value['imagen']==""){
@@ -130,7 +139,7 @@ $idMenu=3;
                             <div class="row g-4">
                                 <!-- Begin - Menú segundos platos -->
                                 <?php
-	                            $menu=ControladorFormularios::ctrListarProductosWeb(2,2);
+                                $menu=ControladorFormularios::ctrListarProductosWeb(2,2);
                                 $cade="";
                                 foreach ($menu as $key => $value) {
                                     if($value['imagen']==""){
@@ -167,7 +176,7 @@ $idMenu=3;
                             <div class="row g-4">
                                 <!-- Begin - Menú postres -->
                                 <?php
-	                            $menu=ControladorFormularios::ctrListarProductosWeb(2,3);
+                                $menu=ControladorFormularios::ctrListarProductosWeb(2,3);
                                 $cade="";
                                 foreach ($menu as $key => $value) {
                                     if($value['imagen']==""){
@@ -204,7 +213,7 @@ $idMenu=3;
                             <div class="row g-4">
                                 <!-- Begin - Menú bodega -->
                                 <?php
-	                            $menu=ControladorFormularios::ctrListarProductosWeb(2,4);
+                                $menu=ControladorFormularios::ctrListarProductosWeb(2,4);
                                 $cade="";
                                 foreach ($menu as $key => $value) {
                                     if($value['imagen']==""){
@@ -281,7 +290,7 @@ $idMenu=3;
                             <div class="row g-4">
                                 <!-- Begin - Menú bodega -->
                                 <?php
-	                            $menu=ControladorFormularios::ctrListarProductosWeb(3,1);
+                                $menu=ControladorFormularios::ctrListarProductosWeb(3,1);
                                 $cade="";
                                 foreach ($menu as $key => $value) {
                                     if($value['imagen']==""){
@@ -318,7 +327,7 @@ $idMenu=3;
                             <div class="row g-4">
                                 <!-- Begin - Menú refrescos -->
                                 <?php
-	                            $menu=ControladorFormularios::ctrListarProductosWeb(3,2);
+                                $menu=ControladorFormularios::ctrListarProductosWeb(3,2);
                                 $cade="";
                                 foreach ($menu as $key => $value) {
                                     if($value['imagen']==""){
@@ -355,7 +364,7 @@ $idMenu=3;
                             <div class="row g-4">
                                 <!-- Begin - Menú postres -->
                                 <?php
-	                            $menu=ControladorFormularios::ctrListarProductosWeb(3,3);
+                                $menu=ControladorFormularios::ctrListarProductosWeb(3,3);
                                 $cade="";
                                 foreach ($menu as $key => $value) {
                                     if($value['imagen']==""){
