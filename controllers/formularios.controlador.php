@@ -60,4 +60,11 @@ class ControladorFormularios{
 		$respuesta = ModeloFormularios::mdlListarDerechosReservados();
 		return($respuesta);
 	}
+	/*=========================================================
+	Filtrar inicio cabecera
+	=========================================================*/
+	static public function ctrFiltrarInicioCabecera($id){		
+		$respuesta = ModeloFormularios::mdlFiltrarInicioCabecera($id);
+		return($respuesta);
+	}
 }

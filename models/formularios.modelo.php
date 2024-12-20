@@ -82,4 +82,15 @@ class ModeloFormularios{
 		$stmt->execute();
 		return $stmt -> fetchAll();	
 	}
+	/*=========================================================
+	Filtrar inicio cabecera
+	=========================================================*/
+	static public function mdlFiltrarInicioCabecera($id){		
+		$stmt = Conexion::conectar()->prepare("SELECT titulo_esp, titulo_eng, titulo_fra, titulo_cat, parrafo_esp, parrafo_eng, parrafo_fra, parrafo_cat
+				FROM sys_cabecera
+				WHERE menu_opcion_id=:menu_opcion_id");
+		$stmt->bindParam(":menu_opcion_id", $id, PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt -> fetchAll();	
+	}
 }

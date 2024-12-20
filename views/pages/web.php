@@ -47,7 +47,7 @@ $idMenu = 1;
             <!-- Navbar Start -->
             <?php include('fragments/header.php'); ?>
             <!-- Navbar End -->
-            <div class="container-xxl py-5 bg-dark hero-header mb-5">
+            <!--div class="container-xxl py-5 bg-dark hero-header mb-5">
                 <div class="container my-5 py-5">
                     <div class="row align-items-center g-5">
                         <div class="col-lg-6 text-center text-lg-start">
@@ -55,11 +55,11 @@ $idMenu = 1;
                             <p class="text-white animated slideInLeft mb-4 pb-2">Ven y degusta de nuestros deliciosos platos especiales, atendemos todo tipo de eventos, contáctate con nosotros y elige la mejor opción dentro de nuestra gran variedad en el menú Robert's.</p>
                         </div>
                         <div class="col-lg-6 text-center text-lg-end overflow-hidden">
-                            <img class="img-fluid" src="<?php echo (SERVERURL); ?>assets/img/hero.png" alt="">
+                            <img class="img-fluid" src="<?php //echo (SERVERURL); ?>assets/img/hero.png" alt="">
                         </div>
                     </div>
                 </div>
-            </div>
+            </div-->
         </div>
         <!-- Navbar & Hero End -->
         <!-- About Start -->
@@ -85,7 +85,6 @@ $idMenu = 1;
                     <div class="col-lg-6">
                         <h5 class="section-title ff-secondary text-start text-primary fw-normal">Sobre Nosotros</h5>
                         <h1 class="mb-4">Bienvenido a Robert's</h1>
-                        <h1 class="mb-4"><?php echo('*'.$_SESSION['lang'].'*')?></h1>
                         <p class="mb-4">
                             Durante todos estos años, gracias al esfuerzo e ilusión, hemos ido evolucionando y profesionalizándonos hasta convertirnos en un referente del sector de la gastronomía. Siempre marcado por nuestro servicio y el buen sabor de muestras comídas.
                         </p>

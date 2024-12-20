@@ -40,28 +40,48 @@
             </a>";
 		$flag++;
 	}
-	$cade.= "</div></div>";
-	/*
-	$cade.="<div class='nav-item dropdown'>
-				<a href='#' class='nav-link dropdown-toggle'  id='languageDropdown' data-bs-toggle='dropdown'>
-					<img src='assets/img/flags/es.png' alt='Español'> Español
-				</a>
-				<div class='dropdown-menu m-0' id='languageMenu' aria-labelledby='languageDropdown'>
-					<a class='dropdown-item' href='#' data-language='Español' data-flag='https://flagcdn.com/w40/es.png'>
-						<img src='assets/img/flags/es.png' alt='Español'> Español
-					</a>
-					<a class='dropdown-item' href='#' data-language='English' data-flag='https://flagcdn.com/w40/gb.png'>
-						<img src='assets/img/flags/gb.png' alt='English'> English
-					</a>
-					<a class='dropdown-item' href='#' data-language='Français' data-flag='https://flagcdn.com/w40/fr.png'>
-						<img src='assets/img/flags/fr.png' alt='Français'> Français
-					</a>
-					<a class='dropdown-item' href='#' data-language='Català' data-flag='https://flagcdn.com/w40/ad.png'>
-						<img src='assets/img/flags/ad.png' alt='Català'> Català
-					</a>
-				</div>
-			</div>";*/
-	$cade.= "</div></div>";
+	$cade.= "</div></div></div></div>";
 	echo($cade);
 	?>
 </nav>
+<?php
+$cade="<div class='container-xxl py-5 bg-dark hero-header mb-5'>";
+$cabecera=ControladorFormularios::ctrFiltrarInicioCabecera($idMenu);
+foreach ($cabecera as $key => $value) {
+	if($_SESSION['lang']==='English'){
+		$titulo=$value['titulo_eng'];
+		$parrafo=$value['parrafo_eng'];
+	}else if($_SESSION['lang']==='Français'){
+		$titulo=$value['titulo_fra'];
+		$parrafo=$value['parrafo_fra'];
+	}else if($_SESSION['lang']==='Català'){
+		$titulo=$value['titulo_cat'];
+		$parrafo=$value['parrafo_cat'];
+	}else{
+		$titulo=$value['titulo_esp'];
+		$parrafo=$value['parrafo_esp'];
+	}
+	if($idMenu===1){
+		$cade.="<div class='container my-5 py-5'>
+					<div class='row align-items-center g-5'>
+						<div class='col-lg-6 text-center text-lg-start'>
+							<h1 class='display-3 text-white animated slideInLeft'>".$titulo."</h1>
+							<p class='text-white animated slideInLeft mb-4 pb-2'>".$parrafo."</p>
+						</div>
+						<div class='col-lg-6 text-center text-lg-end overflow-hidden'>
+							<img class='img-fluid' src='".SERVERURL."assets/img/hero.png' alt=''>
+						</div>
+					</div>
+				</div>";
+	}else{
+		$cade.="<div class='container-xxl py-5 bg-dark hero-header mb-5'>
+					<div class='container text-center my-5 pt-5 pb-4'>
+						<h1 class='display-3 text-white mb-3 animated slideInDown'>".$titulo."</h1>
+					</div>
+				</div>";
+	}
+}
+$cade.="</div>";
+echo($cade);
+?>
+

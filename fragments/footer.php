@@ -79,7 +79,7 @@
 				</div>
 				<div class="col-md-6 text-center text-md-end">
 					<div class="footer-menu">
-						<?php echo($desarrollado);?>:<a class="border-bottom" href="<?php echo($url);?>"> Limbert Olmos M.</a>
+						<?php echo($desarrollado);?>:<a class="border-bottom" href="<?php echo($url);?>" target="_blank"> Limbert Olmos M.</a>
 					</div>
 				</div>
 			</div>
