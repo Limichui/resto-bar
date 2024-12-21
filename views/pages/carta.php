@@ -77,7 +77,7 @@ $idMenu=4;
                             <div class="row g-4">
                                 <!-- Begin - Menú Entrantes-->
                                 <?php
-	                            $menu=ControladorFormularios::ctrListarProductosWeb(4,1);
+                                $menu=ControladorFormularios::ctrListarProductosWeb(4,1);
                                 $cade="";
                                 foreach ($menu as $key => $value) {
                                     if($value['imagen']==""){
@@ -113,7 +113,7 @@ $idMenu=4;
                             <div class="row g-4">
                                 <!-- Begin - Menú Huevos Estrellados-->
                                 <?php
-	                            $menu=ControladorFormularios::ctrListarProductosWeb(4,2);
+                                $menu=ControladorFormularios::ctrListarProductosWeb(4,2);
                                 $cade="";
                                 foreach ($menu as $key => $value) {
                                     if($value['imagen']==""){
@@ -169,7 +169,7 @@ $idMenu=4;
                         </li>
                         <li class="nav-item">
                             <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-p2">
-                                <i class="fa-solid fa-bowl-rice fa-2x text-primary"></i>
+                                <img width="35" height="35" src="<?php echo(SERVERURL);?>assets/img/iconos/plato-arroz.svg"></img>
                                 <div class="ps-3">
                                     <h6 class="mt-n1 mb-0">Arroces y Pastas</h6>
                                 </div>
@@ -185,7 +185,7 @@ $idMenu=4;
                         </li>
                         <li class="nav-item">
                             <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-p4">
-                                <i class="fa-solid fa-fish fa-2x text-primary"></i>
+                                <img width="35" height="35" src="<?php echo(SERVERURL);?>assets/img/iconos/pescado.svg"></img>
                                 <div class="ps-3">
                                     <h6 class="mt-n1 mb-0">Pescados</h6>
                                 </div>
@@ -197,7 +197,7 @@ $idMenu=4;
                             <div class="row g-4">
                                 <!-- Begin - Menú Entrantes-->
                                 <?php
-	                            $menu=ControladorFormularios::ctrListarProductosWeb(5,1);
+                                $menu=ControladorFormularios::ctrListarProductosWeb(5,1);
                                 $cade="";
                                 foreach ($menu as $key => $value) {
                                     if($value['imagen']==""){
@@ -233,7 +233,7 @@ $idMenu=4;
                             <div class="row g-4">
                                 <!-- Begin - Menú Arroces y Pastas-->
                                 <?php
-	                            $menu=ControladorFormularios::ctrListarProductosWeb(5,2);
+                                $menu=ControladorFormularios::ctrListarProductosWeb(5,2);
                                 $cade="";
                                 foreach ($menu as $key => $value) {
                                     if($value['imagen']==""){
@@ -269,7 +269,7 @@ $idMenu=4;
                             <div class="row g-4">
                                 <!-- Begin - Menú Carnes-->
                                 <?php
-	                            $menu=ControladorFormularios::ctrListarProductosWeb(5,3);
+                                $menu=ControladorFormularios::ctrListarProductosWeb(5,3);
                                 $cade="";
                                 foreach ($menu as $key => $value) {
                                     if($value['imagen']==""){
@@ -305,7 +305,7 @@ $idMenu=4;
                             <div class="row g-4">
                                 <!-- Begin - Menú Pescados-->
                                 <?php
-	                            $menu=ControladorFormularios::ctrListarProductosWeb(5,4);
+                                $menu=ControladorFormularios::ctrListarProductosWeb(5,4);
                                 $cade="";
                                 foreach ($menu as $key => $value) {
                                     if($value['imagen']==""){
@@ -353,7 +353,7 @@ $idMenu=4;
                     <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
                         <li class="nav-item">
                             <a class="d-flex align-items-center text-start mx-3 me-0 pb-3 active" data-bs-toggle="pill" href="#tab-s1">
-                                <i class="fa fa-utensils fa-2x text-primary"></i>
+                                <img width="35" height="35" src="<?php echo(SERVERURL);?>assets/img/iconos/cubierto.svg"></img>
                                 <div class="ps-3">
                                     <h6 class="mt-n1 mb-0">Platos Combinados</h6>
                                 </div>
@@ -361,7 +361,7 @@ $idMenu=4;
                         </li>
                         <li class="nav-item">
                             <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-s2">
-                                <i class="fa fa-hamburger fa-2x text-primary"></i>
+                                <img width="35" height="35" src="<?php echo(SERVERURL);?>assets/img/iconos/hamburguesa.svg"></img>
                                 <div class="ps-3">
                                     <h6 class="mt-n1 mb-0">Hamburguesas</h6>
                                 </div>
@@ -369,7 +369,7 @@ $idMenu=4;
                         </li>
                         <li class="nav-item">
                             <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-s3">
-                                <i class="fa-solid fa-pizza-slice fa-2x text-primary"></i>
+                            <img width="35" height="35" src="<?php echo(SERVERURL);?>assets/img/iconos/pizza.svg"></img>
                                 <div class="ps-3">
                                     <h6 class="mt-n1 mb-0">Pizzas</h6>
                                 </div>
@@ -381,7 +381,7 @@ $idMenu=4;
                             <div class="row g-4">
                                 <!-- Begin - Menú Platos Combinados-->
                                 <?php
-	                            $menu=ControladorFormularios::ctrListarProductosWeb(6,1);
+                                $menu=ControladorFormularios::ctrListarProductosWeb(6,1);
                                 $cade="";
                                 foreach ($menu as $key => $value) {
                                     if($value['imagen']==""){

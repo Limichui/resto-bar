@@ -76,11 +76,29 @@ $idMenu=5;
                                     }else{
                                         $img="<img class='flex-shrink-0 img-fluid rounded' src='".SERVERURL."assets/img/productos/".$value['imagen']."' alt='' style='width: 80px;'>";
                                     }
+                                    if($_SESSION['lang']==='English') $producto=$value['producto_eng'];
+                                    else if($_SESSION['lang']==='Français') $producto=$value['producto_fra'];
+                                    else if($_SESSION['lang']==='Català') $producto=$value['producto_cat'];
+                                    else $producto=$value['producto_esp'];
+
                                     $detalles=ControladorFormularios::ctrListarDetalleProductos($value['id']);
                                     $cadenaDetalle="";
                                     if($detalles){
                                         foreach ($detalles as $keyDetalle => $valueDetalle) {
-                                            $cadenaDetalle.="<small class='fst-italic'><label class='text-primary'>".$valueDetalle['tipo_detalle_esp'].":</label> ".$valueDetalle['detalle_esp'].".</small>";      
+                                            if($_SESSION['lang']==='English'){
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_eng'];
+                                                $detalle=$valueDetalle['detalle_eng'];
+                                            }else if($_SESSION['lang']==='Français'){
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_fra'];
+                                                $detalle=$valueDetalle['detalle_fra'];
+                                            }else if($_SESSION['lang']==='Català'){
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_cat'];
+                                                $detalle=$valueDetalle['detalle_cat'];
+                                            }else{
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_esp'];
+                                                $detalle=$valueDetalle['detalle_esp'];
+                                            }
+                                            $cadenaDetalle.="<small class='fst-italic'><label class='text-primary'>".$tipoDetalle.":</label> ".$detalle.".</small>";      
                                         }
                                     }else{
                                         $cadenaDetalle.="<small class='fst-italic'></small>";      
@@ -89,7 +107,7 @@ $idMenu=5;
                                                 <div class='d-flex align-items-center'>".$img.
                                                     "<div class='w-100 d-flex flex-column text-start ps-4'>
                                                         <h6 class='d-flex justify-content-between border-bottom pb-2'>
-                                                            <span>".$value['producto_esp']."</span>
+                                                            <span>".$producto."</span>
                                                             <span class='text-primary'>".$value['precio']." &euro;</span>
                                                         </h6>".$cadenaDetalle."
                                                     </div>

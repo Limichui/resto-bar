@@ -35,7 +35,7 @@ class ModeloFormularios{
 	Listar detalle productos
 	=========================================================*/
 	static public function mdlListarDetalleProductos($idProducto){		
-		$stmt = Conexion::conectar()->prepare("SELECT a.id, a.detalle_esp, a.detalle_eng, a.detalle_fra, a.detalle_cat, b.tipo_detalle_esp
+		$stmt = Conexion::conectar()->prepare("SELECT a.id, a.detalle_esp, a.detalle_eng, a.detalle_fra, a.detalle_cat, b.tipo_detalle_esp, b.tipo_detalle_eng, b.tipo_detalle_fra, b.tipo_detalle_cat
 			FROM detalle_productos a INNER JOIN 
 				tipo_detalle_producto b ON a.tipo_detalle_producto_id = b.id
 			WHERE (a.producto_id=:producto_id)AND(a.estado=1)
@@ -150,6 +150,18 @@ class ModeloFormularios{
 				mensaje_esp, mensaje_eng, mensaje_fra, mensaje_cat,
 				boton_esp, boton_eng, boton_fra, boton_cat 
 				FROM  sys_form_contacto_web");
+		$stmt->execute();
+		return $stmt -> fetchAll();	
+	}
+	/*=========================================================
+	Filtrar menu cabecera
+	=========================================================*/
+	static public function mdlListarMenuCabecera($id){		
+		$stmt = Conexion::conectar()->prepare("SELECT id, icono, opcion_esp, opcion_eng, opcion_fra, opcion_cat
+				FROM  menu_cabeceras
+				WHERE subcategoria_id=:subcategoria_id
+				ORDER BY id ASC");
+		$stmt->bindParam(":subcategoria_id", $id, PDO::PARAM_INT);
 		$stmt->execute();
 		return $stmt -> fetchAll();	
 	}

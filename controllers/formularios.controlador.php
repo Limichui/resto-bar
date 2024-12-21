@@ -102,5 +102,11 @@ class ControladorFormularios{
 		$respuesta = ModeloFormularios::mdlFiltrarLabelFromContacto();
 		return($respuesta);
 	}
-	
+	/*=========================================================
+	Filtrar menu cabecera
+	=========================================================*/
+	static public function ctrListarMenuCabecera($id){		
+		$respuesta = ModeloFormularios::mdlListarMenuCabecera($id);
+		return($respuesta);
+	}
 }

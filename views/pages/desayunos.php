@@ -64,46 +64,30 @@ $idMenu=2;
                 </div>
                 <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
                     <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
-                        <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 pb-3 active" data-bs-toggle="pill" href="#tab-1">
-                            <img width="35" height="35" src="<?php echo(SERVERURL);?>assets/img/iconos/bocadillo.svg"></img>
-                                <div class="ps-3">
-                                    <h6 class="mt-n1 mb-0">Bocadillos</h6>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-2">
-                                <img width="35" height="35" src="<?php echo(SERVERURL);?>assets/img/iconos/plato-huevos.svg"></img>
-                                <div class="ps-3">
-                                    <h6 class="mt-n1 mb-0">Breakfast</h6>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-3">
-                            <img width="35" height="35" src="<?php echo(SERVERURL);?>assets/img/iconos/sandwich.svg"></img>
-                                <div class="ps-3">
-                                    <h6 class="mt-n1 mb-0">Sándwiches</h6>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-4">
-                            <img width="35" height="35" src="<?php echo(SERVERURL);?>assets/img/iconos/torta.svg"></img>
-                                <div class="ps-3">
-                                    <h6 class="mt-n1 mb-0">Pastelería</h6>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-5">
-                            <img width="35" height="35" src="<?php echo(SERVERURL);?>assets/img/iconos/batido.svg"></img>
-                                <div class="ps-3">
-                                    <h6 class="mt-n1 mb-0">Batidos/Smoothies</h6>
-                                </div>
-                            </a>
-                        </li>
+                        <?php
+                        $listaMenuCabecera=ControladorFormularios::ctrListarMenuCabecera(1);
+                        $conta=1;
+                        $cade='';
+                        foreach ($listaMenuCabecera as $key => $value) {
+                            $icono=$value['icono'];
+                            if($_SESSION['lang']==='English') $opcion=$value['opcion_eng'];
+                            else if($_SESSION['lang']==='Français') $opcion=$value['opcion_fra'];
+                            else if($_SESSION['lang']==='Català') $opcion=$value['opcion_cat'];
+                            else $opcion=$value['opcion_esp'];
+                            if($conta==1) $flag="active";
+                            $cade.="<li class='nav-item'>
+                                        <a class='d-flex align-items-center text-start mx-3 pb-3 ".$flag."' data-bs-toggle='pill' href='#tab-".$conta."'>
+                                        <img width='35' height='35' src='".SERVERURL."assets/img/iconos/".$icono."'></img>
+                                            <div class='ps-3'>
+                                                <h6 class='mt-n1 mb-0'>".$opcion."</h6>
+                                            </div>
+                                        </a>
+                                    </li>";
+                            $conta++;
+                            $flag="";
+                        }
+                        echo($cade);
+                        ?>
                     </ul>
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0 active">
@@ -118,11 +102,29 @@ $idMenu=2;
                                     }else{
                                         $img="<img class='flex-shrink-0 img-fluid rounded' src='".SERVERURL."assets/img/productos/".$value['imagen']."' alt='' style='width: 80px;'>";
                                     }
+                                    if($_SESSION['lang']==='English') $producto=$value['producto_eng'];
+                                    else if($_SESSION['lang']==='Français') $producto=$value['producto_fra'];
+                                    else if($_SESSION['lang']==='Català') $producto=$value['producto_cat'];
+                                    else $producto=$value['producto_esp'];
+
                                     $detalles=ControladorFormularios::ctrListarDetalleProductos($value['id']);
                                     $cadenaDetalle="";
                                     if($detalles){
                                         foreach ($detalles as $keyDetalle => $valueDetalle) {
-                                            $cadenaDetalle.="<small class='fst-italic'><label class='text-primary'>".$valueDetalle['tipo_detalle_esp'].":</label> ".$valueDetalle['detalle_esp'].".</small>";      
+                                            if($_SESSION['lang']==='English'){
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_eng'];
+                                                $detalle=$valueDetalle['detalle_eng'];
+                                            }else if($_SESSION['lang']==='Français'){
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_fra'];
+                                                $detalle=$valueDetalle['detalle_fra'];
+                                            }else if($_SESSION['lang']==='Català'){
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_cat'];
+                                                $detalle=$valueDetalle['detalle_cat'];
+                                            }else{
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_esp'];
+                                                $detalle=$valueDetalle['detalle_esp'];
+                                            }
+                                            $cadenaDetalle.="<small class='fst-italic'><label class='text-primary'>".$tipoDetalle.":</label> ".$detalle.".</small>"; 
                                         }
                                     }else{
                                         $cadenaDetalle.="<small class='fst-italic'></small>";      
@@ -131,7 +133,7 @@ $idMenu=2;
                                                 <div class='d-flex align-items-center'>".$img.
                                                     "<div class='w-100 d-flex flex-column text-start ps-4'>
                                                         <h6 class='d-flex justify-content-between border-bottom pb-2'>
-                                                            <span>".$value['producto_esp']."</span>
+                                                            <span>".$producto."</span>
                                                             <span class='text-primary'>".$value['precio']." &euro;</span>
                                                         </h6>".$cadenaDetalle."
                                                     </div>
@@ -154,11 +156,29 @@ $idMenu=2;
                                     }else{
                                         $img="<img class='flex-shrink-0 img-fluid rounded' src='".SERVERURL."assets/img/productos/".$value['imagen']."' alt='' style='width: 80px;'>";
                                     }
+                                    if($_SESSION['lang']==='English') $producto=$value['producto_eng'];
+                                    else if($_SESSION['lang']==='Français') $producto=$value['producto_fra'];
+                                    else if($_SESSION['lang']==='Català') $producto=$value['producto_cat'];
+                                    else $producto=$value['producto_esp'];
+
                                     $detalles=ControladorFormularios::ctrListarDetalleProductos($value['id']);
                                     $cadenaDetalle="";
                                     if($detalles){
                                         foreach ($detalles as $keyDetalle => $valueDetalle) {
-                                            $cadenaDetalle.="<small class='fst-italic'><label class='text-primary'>".$valueDetalle['tipo_detalle_esp'].":</label> ".$valueDetalle['detalle_esp'].".</small>";      
+                                            if($_SESSION['lang']==='English'){
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_eng'];
+                                                $detalle=$valueDetalle['detalle_eng'];
+                                            }else if($_SESSION['lang']==='Français'){
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_fra'];
+                                                $detalle=$valueDetalle['detalle_fra'];
+                                            }else if($_SESSION['lang']==='Català'){
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_cat'];
+                                                $detalle=$valueDetalle['detalle_cat'];
+                                            }else{
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_esp'];
+                                                $detalle=$valueDetalle['detalle_esp'];
+                                            }
+                                            $cadenaDetalle.="<small class='fst-italic'><label class='text-primary'>".$tipoDetalle.":</label> ".$detalle.".</small>";      
                                         }
                                     }else{
                                         $cadenaDetalle.="<small class='fst-italic'></small>";      
@@ -167,7 +187,7 @@ $idMenu=2;
                                                 <div class='d-flex align-items-center'>".$img.
                                                     "<div class='w-100 d-flex flex-column text-start ps-4'>
                                                         <h6 class='d-flex justify-content-between border-bottom pb-2'>
-                                                            <span>".$value['producto_esp']."</span>
+                                                            <span>".$producto."</span>
                                                             <span class='text-primary'>".$value['precio']." &euro;</span>
                                                         </h6>".$cadenaDetalle."
                                                     </div>
@@ -190,11 +210,29 @@ $idMenu=2;
                                     }else{
                                         $img="<img class='flex-shrink-0 img-fluid rounded' src='".SERVERURL."assets/img/productos/".$value['imagen']."' alt='' style='width: 80px;'>";
                                     }
+                                    if($_SESSION['lang']==='English') $producto=$value['producto_eng'];
+                                    else if($_SESSION['lang']==='Français') $producto=$value['producto_fra'];
+                                    else if($_SESSION['lang']==='Català') $producto=$value['producto_cat'];
+                                    else $producto=$value['producto_esp'];
+
                                     $detalles=ControladorFormularios::ctrListarDetalleProductos($value['id']);
                                     $cadenaDetalle="";
                                     if($detalles){
                                         foreach ($detalles as $keyDetalle => $valueDetalle) {
-                                            $cadenaDetalle.="<small class='fst-italic'><label class='text-primary'>".$valueDetalle['tipo_detalle_esp'].":</label> ".$valueDetalle['detalle_esp'].".</small>";      
+                                            if($_SESSION['lang']==='English'){
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_eng'];
+                                                $detalle=$valueDetalle['detalle_eng'];
+                                            }else if($_SESSION['lang']==='Français'){
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_fra'];
+                                                $detalle=$valueDetalle['detalle_fra'];
+                                            }else if($_SESSION['lang']==='Català'){
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_cat'];
+                                                $detalle=$valueDetalle['detalle_cat'];
+                                            }else{
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_esp'];
+                                                $detalle=$valueDetalle['detalle_esp'];
+                                            }
+                                            $cadenaDetalle.="<small class='fst-italic'><label class='text-primary'>".$tipoDetalle.":</label> ".$detalle.".</small>"; 
                                         }
                                     }else{
                                         $cadenaDetalle.="<small class='fst-italic'></small>";      
@@ -203,7 +241,7 @@ $idMenu=2;
                                                 <div class='d-flex align-items-center'>".$img.
                                                     "<div class='w-100 d-flex flex-column text-start ps-4'>
                                                         <h6 class='d-flex justify-content-between border-bottom pb-2'>
-                                                            <span>".$value['producto_esp']."</span>
+                                                            <span>".$producto."</span>
                                                             <span class='text-primary'>".$value['precio']." &euro;</span>
                                                         </h6>".$cadenaDetalle."
                                                     </div>
@@ -226,11 +264,29 @@ $idMenu=2;
                                     }else{
                                         $img="<img class='flex-shrink-0 img-fluid rounded' src='".SERVERURL."assets/img/productos/".$value['imagen']."' alt='' style='width: 80px;'>";
                                     }
+                                    if($_SESSION['lang']==='English') $producto=$value['producto_eng'];
+                                    else if($_SESSION['lang']==='Français') $producto=$value['producto_fra'];
+                                    else if($_SESSION['lang']==='Català') $producto=$value['producto_cat'];
+                                    else $producto=$value['producto_esp'];
+
                                     $detalles=ControladorFormularios::ctrListarDetalleProductos($value['id']);
                                     $cadenaDetalle="";
                                     if($detalles){
                                         foreach ($detalles as $keyDetalle => $valueDetalle) {
-                                            $cadenaDetalle.="<small class='fst-italic'><label class='text-primary'>".$valueDetalle['tipo_detalle_esp'].":</label> ".$valueDetalle['detalle_esp'].".</small>";      
+                                            if($_SESSION['lang']==='English'){
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_eng'];
+                                                $detalle=$valueDetalle['detalle_eng'];
+                                            }else if($_SESSION['lang']==='Français'){
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_fra'];
+                                                $detalle=$valueDetalle['detalle_fra'];
+                                            }else if($_SESSION['lang']==='Català'){
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_cat'];
+                                                $detalle=$valueDetalle['detalle_cat'];
+                                            }else{
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_esp'];
+                                                $detalle=$valueDetalle['detalle_esp'];
+                                            }
+                                            $cadenaDetalle.="<small class='fst-italic'><label class='text-primary'>".$tipoDetalle.":</label> ".$detalle.".</small>"; 
                                         }
                                     }else{
                                         $cadenaDetalle.="<small class='fst-italic'></small>";      
@@ -239,7 +295,7 @@ $idMenu=2;
                                                 <div class='d-flex align-items-center'>".$img.
                                                     "<div class='w-100 d-flex flex-column text-start ps-4'>
                                                         <h6 class='d-flex justify-content-between border-bottom pb-2'>
-                                                            <span>".$value['producto_esp']."</span>
+                                                            <span>".$producto."</span>
                                                             <span class='text-primary'>".$value['precio']." &euro;</span>
                                                         </h6>".$cadenaDetalle."
                                                     </div>
@@ -262,11 +318,29 @@ $idMenu=2;
                                     }else{
                                         $img="<img class='flex-shrink-0 img-fluid rounded' src='".SERVERURL."assets/img/productos/".$value['imagen']."' alt='' style='width: 80px;'>";
                                     }
+                                    if($_SESSION['lang']==='English') $producto=$value['producto_eng'];
+                                    else if($_SESSION['lang']==='Français') $producto=$value['producto_fra'];
+                                    else if($_SESSION['lang']==='Català') $producto=$value['producto_cat'];
+                                    else $producto=$value['producto_esp'];
+
                                     $detalles=ControladorFormularios::ctrListarDetalleProductos($value['id']);
                                     $cadenaDetalle="";
                                     if($detalles){
                                         foreach ($detalles as $keyDetalle => $valueDetalle) {
-                                            $cadenaDetalle.="<small class='fst-italic'><label class='text-primary'>".$valueDetalle['tipo_detalle_esp'].":</label> ".$valueDetalle['detalle_esp'].".</small>";      
+                                            if($_SESSION['lang']==='English'){
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_eng'];
+                                                $detalle=$valueDetalle['detalle_eng'];
+                                            }else if($_SESSION['lang']==='Français'){
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_fra'];
+                                                $detalle=$valueDetalle['detalle_fra'];
+                                            }else if($_SESSION['lang']==='Català'){
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_cat'];
+                                                $detalle=$valueDetalle['detalle_cat'];
+                                            }else{
+                                                $tipoDetalle=$valueDetalle['tipo_detalle_esp'];
+                                                $detalle=$valueDetalle['detalle_esp'];
+                                            }
+                                            $cadenaDetalle.="<small class='fst-italic'><label class='text-primary'>".$tipoDetalle.":</label> ".$detalle.".</small>"; 
                                         }
                                     }else{
                                         $cadenaDetalle.="<small class='fst-italic'></small>";      
@@ -275,7 +349,7 @@ $idMenu=2;
                                                 <div class='d-flex align-items-center'>".$img.
                                                     "<div class='w-100 d-flex flex-column text-start ps-4'>
                                                         <h6 class='d-flex justify-content-between border-bottom pb-2'>
-                                                            <span>".$value['producto_esp']."</span>
+                                                            <span>".$producto."</span>
                                                             <span class='text-primary'>".$value['precio']." &euro;</span>
                                                         </h6>".$cadenaDetalle."
                                                     </div>
