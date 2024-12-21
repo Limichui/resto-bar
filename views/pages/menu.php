@@ -48,18 +48,27 @@ $idMenu=3;
         <!-- Navbar & Hero End -->
         <!-- Menu Start -->
         <?php
+        $count=0;
         $subtitulos = ControladorFormularios::ctrListarSubTitulos($idMenu);
         foreach ($subtitulos as $key => $value) {
-                if($_SESSION['lang']==='English') $subtitulo=$value['subtitulo_eng'];
-                else if($_SESSION['lang']==='Français') $subtitulo=$value['subtitulo_fra'];
-                else if($_SESSION['lang']==='Català') $subtitulo=$value['subtitulo_cat'];
-                else $subtitulo=$value['subtitulo_esp'];
+            if($count===0){
+                if($_SESSION['lang']==='English') $subtitulo1=$value['subtitulo_eng'];
+                else if($_SESSION['lang']==='Français') $subtitulo1=$value['subtitulo_fra'];
+                else if($_SESSION['lang']==='Català') $subtitulo1=$value['subtitulo_cat'];
+                else $subtitulo1=$value['subtitulo_esp'];
+            }else{
+                if($_SESSION['lang']==='English') $subtitulo2=$value['subtitulo_eng'];
+                else if($_SESSION['lang']==='Français') $subtitulo2=$value['subtitulo_fra'];
+                else if($_SESSION['lang']==='Català') $subtitulo2=$value['subtitulo_cat'];
+                else $subtitulo2=$value['subtitulo_esp'];
+            }
+            $count++;
         }
         ?>
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h4 class="section-title ff-secondary text-center text-primary fw-normal">Menú Diario</h4>
+                    <h4 class="section-title ff-secondary text-center text-primary fw-normal"><?php echo($subtitulo1);?></h4>
                     <h1 class="mb-5"></h1>
                 </div>
                 <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -319,7 +328,7 @@ $idMenu=3;
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h4 class="section-title ff-secondary text-center text-primary fw-normal">Menú Infantil</h4>
+                    <h4 class="section-title ff-secondary text-center text-primary fw-normal"><?php echo($subtitulo2);?></h4>
                     <h1 class="mb-5"></h1>
                 </div>
                 <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
