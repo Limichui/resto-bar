@@ -110,7 +110,7 @@ class ControladorFormularios{
 		return($respuesta);
 	}
 	/*=========================================================
-	Registrar mensaje
+	Registrar Mensajes/Consultas
 	=========================================================*/
 	static public function ctrRegistrarMensaje($datos){		
 		$respuesta = ModeloFormularios::mdlRegistrarMensaje($datos);

@@ -56,30 +56,35 @@ submitButtonInsert.addEventListener('click', (e) => {
         processData: false,
         dataType: "json",
         success: function (response) {
-            console.log(response);
-            return;
-        if (response.flat == 'true') {
-            $('#insertProductModal').modal('hide');
+        if (response.flag == 'true') {
             $('#messageModalTitle').html("Confirmación");
-            $('#messageModalBody').html("<div style='text-align: center;'><img class='img-profile rounded-square' style='width: 50px; margin-bottom: 10px;' src='assets/images/icons/ok.png'><br/>Registro completado.</div>");
+            $('#messageModalBody').html("<div style='text-align: center;'><img class='img-profile rounded-square' style='width: 50px; margin-bottom: 10px;' src='assets/img/iconos/ok.png'><br/>"+msgError.confirmacion+"</div>");
             $('#messageModal').modal('show');
+            
             if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
+                window.history.replaceState(null, null, window.location.href);
             }
             setTimeout(function () {
-            window.location = "./?accion=" + document.querySelector("#page").value.trim();
-            }, 2000);
+                document.querySelector("#msgNombre").value = "";
+                document.querySelector("#msgEmail").value = "";
+                document.querySelector("#msgAsunto").value = "";
+                document.querySelector("#msgMensaje").value = "";
+                $('#messageModal').modal('hide');
+            }, 3000);
         } else {
-            $('#insertProductModal').modal('hide');
             $('#messageModalTitle').html("Mensaje");
-            $('#messageModalBody').html("<div style='text-align: center;'><img class='img-profile rounded-square' style='width: 50px; margin-bottom: 10px;' src='assets/images/icons/error.png'><br/>Ocurrió un error, vuelva a intentarlo.</div>");
+            $('#messageModalBody').html("<div style='text-align: center;'><img class='img-profile rounded-square' style='width: 50px; margin-bottom: 10px;' src='assets/img/iconos/error.png'><br/>"+msgError.error+"</div>");
             $('#messageModal').modal('show');
             if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
+                window.history.replaceState(null, null, window.location.href);
             }
             setTimeout(function () {
-            window.location = "./?accion=" + document.querySelector("#page").value.trim();
-            }, 2000);
+                document.querySelector("#msgNombre").value = "";
+                document.querySelector("#msgEmail").value = "";
+                document.querySelector("#msgAsunto").value = "";
+                document.querySelector("#msgMensaje").value = "";
+                $('#messageModal').modal('hide');
+            }, 3000);
         }
         }
     }); //Fin ajax

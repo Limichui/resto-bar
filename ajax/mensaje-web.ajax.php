@@ -1,7 +1,6 @@
 <?php
 require_once "../controllers/formularios.controlador.php";
-require_once "../models/productos.modelo.php";
-require_once "../views/pages/functions/funciones.php";
+require_once "../models/formularios.modelo.php";
 
 
 
@@ -15,20 +14,15 @@ Array
     [msgMensaje] => vzzvzvzvzv
 )
 */
-$datos=array('imagen' => $archivo,
-		'producto_esp' => $_POST["productoEspInsert"],
-		'producto_eng' => $_POST["productoEngInsert"],
-		'producto_fra' => $_POST["productoFraInsert"],
-		'producto_cat' => $_POST["productoCatInsert"],
-		'precio' => $precio,
-		'estado' => 1,
-		'subcategoria_id' => $_POST["idSubCategoriaInsert"],
-		'tipo_producto_id' => $_POST["idTipoProductoInsert"]
+$datos=array('nombre' => mb_strtoupper($_POST["msgNombre"], 'UTF-8'),
+		'email' => mb_strtolower($_POST["msgEmail"], 'UTF-8'),
+		'asunto' => mb_strtoupper($_POST["msgAsunto"], 'UTF-8'),
+		'mensaje' => $_POST["msgMensaje"]
 		);
-$respuesta=ControladorFormularios::ctrRegistrarProducto($datos);
+$respuesta=ControladorFormularios::ctrRegistrarMensaje($datos);
 if($respuesta=="1"){
-	echo json_encode(array("flat"=>"true"));
+	echo json_encode(array("flag"=>"true"));
 }else{
-	echo json_encode(array("flat"=>"false"));
+	echo json_encode(array("flag"=>"false"));
 }
-	*/
+

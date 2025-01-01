@@ -116,7 +116,9 @@ $idMenu=6;
                             'email1' => "The email is mandatory.",
                             'email2' => "The email is not in a valid format.",
                             'asunto' => "The subject is mandatory.",
-                            'mensaje' => "The message is mandatory."
+                            'mensaje' => "The message is mandatory.",
+                            'confirmacion' => "Registration completed.",
+                            'error' => "An error occurred, please try again."
                         );
                     }else if($_SESSION['lang']==='Français'){
                         $msgError=array(
@@ -124,7 +126,9 @@ $idMenu=6;
                             'email1' => "L'email est obligatoire.",
                             'email2' => "L'email n'a pas un format valide.",
                             'asunto' => "L'objet est obligatoire.",
-                            'mensaje' => "Le message est obligatoire."
+                            'mensaje' => "Le message est obligatoire.",
+                            'confirmacion' => "Inscription terminée.",
+                            'error' => "Une erreur s'est produite, veuillez réessayer."
                         );
                     }else if($_SESSION['lang']==='Català'){
                         $msgError=array(
@@ -132,7 +136,9 @@ $idMenu=6;
                             'email1' => "El correu electrònic és obligatori.",
                             'email2' => "El correu electrònic no té un format vàlid.",
                             'asunto' => "L'assumpte és obligatori.",
-                            'mensaje' => "El missatge és obligatori."
+                            'mensaje' => "El missatge és obligatori.",
+                            'confirmacion' => "Registre completat.",
+                            'error' => "Ha ocorregut un error, torneu-ho a intentar."
                         );
                     }else{
                         $msgError=array(
@@ -140,7 +146,9 @@ $idMenu=6;
                             'email1' => "El email es obligatorio.",
                             'email2' => "El email no tiene un formato válido.",
                             'asunto' => "El asunto es obligatorio.",
-                            'mensaje' => "El mensaje es obligatorio."
+                            'mensaje' => "El mensaje es obligatorio.",
+                            'confirmacion' => "Registro completado.",
+                            'error' => "Ocurrió un error, vuelva a intentarlo."
                         );
                     }
                     $dataAttribute = htmlspecialchars(json_encode($msgError), ENT_QUOTES, 'UTF-8');
@@ -213,6 +221,15 @@ $idMenu=6;
             </div>
         </div>
         <!-- Contact End -->
+        <!-- Modal Start-->
+        <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-body" id="messageModalBody"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal End -->
         <!-- Footer Start -->
         <?php include('fragments/footer.php'); ?>
         <!-- Footer End -->
