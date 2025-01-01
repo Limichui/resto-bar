@@ -109,4 +109,11 @@ class ControladorFormularios{
 		$respuesta = ModeloFormularios::mdlListarMenuCabecera($id);
 		return($respuesta);
 	}
+	/*=========================================================
+	Registrar mensaje
+	=========================================================*/
+	static public function ctrRegistrarMensaje($datos){		
+		$respuesta = ModeloFormularios::mdlRegistrarMensaje($datos);
+		return($respuesta);
+	}
 }

@@ -39,9 +39,9 @@ function show_modal_product_update(id,subcategoria_id){
                 }
                 $('#updateProductModal').modal('show');
             }else{
-              $('#updateProductModal').modal('hide');
-              $('#messageModalBody').html("Ocurrió un error, vuelva a intentarlo");
-              $('#messageModal').modal('show');
+                $('#updateProductModal').modal('hide');
+                $('#messageModalBody').html("Ocurrió un error, vuelva a intentarlo");
+                $('#messageModal').modal('show');
             }
         }
     });
@@ -74,9 +74,9 @@ function show_modal_product_image(id){
 
                 $('#updateImageModal').modal('show');
             }else{
-              $('#updateImageModal').modal('hide');
-              $('#messageModalBody').html("<div style='text-align: center;'><img class='img-profile rounded-square' style='width: 50px; margin-bottom: 10px;' src='assets/images/icons/error.png'><br/>Ocurrió un error, vuelva a intentarlo.</div>");
-              $('#messageModal').modal('show');
+                $('#updateImageModal').modal('hide');
+                $('#messageModalBody').html("<div style='text-align: center;'><img class='img-profile rounded-square' style='width: 50px; margin-bottom: 10px;' src='assets/images/icons/error.png'><br/>Ocurrió un error, vuelva a intentarlo.</div>");
+                $('#messageModal').modal('show');
             }
         }
     });
@@ -97,9 +97,9 @@ function show_modal_detils_product(id){
                 render_details(response.id);
                 $('#detailsProductModal').modal('show');
             }else{
-              $('#detailsProductModal').modal('hide');
-              $('#messageModalBody').html("<div style='text-align: center;'><img class='img-profile rounded-square' style='width: 50px; margin-bottom: 10px;' src='assets/images/icons/error.png'><br/>Ocurrió un error, vuelva a intentarlo.</div>");
-              $('#messageModal').modal('show');
+                $('#detailsProductModal').modal('hide');
+                $('#messageModalBody').html("<div style='text-align: center;'><img class='img-profile rounded-square' style='width: 50px; margin-bottom: 10px;' src='assets/images/icons/error.png'><br/>Ocurrió un error, vuelva a intentarlo.</div>");
+                $('#messageModal').modal('show');
             }
         }
     });

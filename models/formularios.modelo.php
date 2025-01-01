@@ -165,4 +165,21 @@ class ModeloFormularios{
 		$stmt->execute();
 		return $stmt -> fetchAll();	
 	}
+	/*=========================================================
+	Registrar Nuevo Producto
+	=========================================================*/
+	static public function mdlRegistrarMensaje($datos){
+		$stmt = Conexion::conectar()->prepare("INSERT INTO mensajes_web(nombre, producto_esp, producto_eng, producto_fra, producto_cat, 
+					precio, estado, subcategoria_id, tipo_producto_id)
+				VALUES(:imagen, :producto_esp, :producto_eng, :producto_fra, )");
+		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":email", $datos["email"], PDO::PARAM_STR);
+		$stmt->bindParam(":asunto", $datos["asunto"], PDO::PARAM_STR);
+		$stmt->bindParam(":mensaje", $datos["mensaje"], PDO::PARAM_STR);
+		if($stmt->execute()){
+			return "1";
+		}else{
+			return "0";
+		}
+	}
 }

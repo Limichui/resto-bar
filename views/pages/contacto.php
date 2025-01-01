@@ -29,6 +29,13 @@ $idMenu=6;
     <link href="<?php echo(SERVERURL);?>assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Template Stylesheet -->
     <link href="<?php echo(SERVERURL);?>assets/css/style.css" rel="stylesheet">
+    <style>
+    .error-message {
+        margin-top: 5px;
+        font-size: 0.9em;
+        color: red;
+    }
+    </style>
 </head>
 <body>
     <div class="container-xxl bg-white p-0">
@@ -103,6 +110,41 @@ $idMenu=6;
                             
                     </div>
                     <?php
+                    if($_SESSION['lang']==='English'){
+                        $msgError=array(
+                            'nombre' => "The name is mandatory.",
+                            'email1' => "The email is mandatory.",
+                            'email2' => "The email is not in a valid format.",
+                            'asunto' => "The subject is mandatory.",
+                            'mensaje' => "The message is mandatory."
+                        );
+                    }else if($_SESSION['lang']==='Français'){
+                        $msgError=array(
+                            'nombre' => "Le nom est obligatoire.",
+                            'email1' => "L'email est obligatoire.",
+                            'email2' => "L'email n'a pas un format valide.",
+                            'asunto' => "L'objet est obligatoire.",
+                            'mensaje' => "Le message est obligatoire."
+                        );
+                    }else if($_SESSION['lang']==='Català'){
+                        $msgError=array(
+                            'nombre' => "El nom és obligatori.",
+                            'email1' => "El correu electrònic és obligatori.",
+                            'email2' => "El correu electrònic no té un format vàlid.",
+                            'asunto' => "L'assumpte és obligatori.",
+                            'mensaje' => "El missatge és obligatori."
+                        );
+                    }else{
+                        $msgError=array(
+                            'nombre' => "El nombre es obligatorio.",
+                            'email1' => "El email es obligatorio.",
+                            'email2' => "El email no tiene un formato válido.",
+                            'asunto' => "El asunto es obligatorio.",
+                            'mensaje' => "El mensaje es obligatorio."
+                        );
+                    }
+                    $dataAttribute = htmlspecialchars(json_encode($msgError), ENT_QUOTES, 'UTF-8');
+
                     $etiquetasFromLabel = ControladorFormularios::ctrFiltrarLabelFromContacto();
                     foreach ($etiquetasFromLabel as $key => $value) {
                         if($_SESSION['lang']==='English'){
@@ -134,34 +176,34 @@ $idMenu=6;
                     ?>
                     <div class="col-md-6">
                         <div class="wow fadeInUp" data-wow-delay="0.2s">
-                            <form>
+                            <form id="mensaje_web_insert_form" method="post">
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="txtNombre" placeholder="<?php echo($nombre);?>" required>
-                                            <label for="name"><?php echo($nombre);?></label>
+                                            <input type="text" class="form-control" id="msgNombre" name="msgNombre" placeholder="<?php echo($nombre);?>" style="text-transform:uppercase" required>
+                                            <label for="msgNombre"><?php echo($nombre);?></label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="email" class="form-control" id="txtEmail" placeholder="<?php echo($email);?>" required>
-                                            <label for="email"><?php echo($email);?></label>
+                                            <input type="email" class="form-control" id="msgEmail" name="msgEmail" placeholder="<?php echo($email);?>" style="text-transform:lowercase" required>
+                                            <label for="msgEmail"><?php echo($email);?></label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="subject" placeholder="<?php echo($asunto);?>" required>
-                                            <label for="subject"><?php echo($asunto);?></label>
+                                            <input type="text" class="form-control" id="msgAsunto" name="msgAsunto" placeholder="<?php echo($asunto);?>" style="text-transform:uppercase" required>
+                                            <label for="msgAsunto"><?php echo($asunto);?></label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <textarea class="form-control" placeholder="<?php echo($mensaje);?>" id="Mensaje" style="height: 150px" required></textarea>
+                                            <textarea class="form-control" placeholder="<?php echo($mensaje);?>" id="msgMensaje" name="msgMensaje" style="height: 150px" required></textarea>
                                             <label for="message"><?php echo($mensaje);?></label>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit"><?php echo($boton);?></button>
+                                        <button class="btn btn-primary w-100 py-3" type="submit" id="mensaje_web_insert_button_submit" data-msg-error='<?php echo $dataAttribute; ?>'><?php echo($boton);?></button>
                                     </div>
                                 </div>
                             </form>
@@ -193,6 +235,8 @@ $idMenu=6;
     <!-- Template Javascript -->
     <script src="<?php echo (SERVERURL); ?>assets/js/languages.js"></script>
     <script src="<?php echo(SERVERURL);?>assets/js/main.js"></script>
+                    <!-- Template Javascript -->
+    <script src="<?php echo(SERVERURL);?>assets/js/insert-mensaje-web.js"></script>
 </body>
 
 </html>

@@ -32,7 +32,7 @@
                     //print_r($productos);
                     $cade="";
                     if($productos){
-			            foreach($productos as $key => $value){
+                        foreach($productos as $key => $value){
                             if($value['imagen']!=''){
                                 $image="<a class='nav-link' href='' onclick='show_modal_product_image(".$value['id'].");' data-toggle='modal' >
                                         <img class='img-profile rounded-square' style='width: 50px;' src='../assets/img/productos/".$value['imagen']."'>
@@ -98,7 +98,7 @@
                     $productos=ControladorFormularios::ctrListarProductos($datos);
                     $cade="";
                     if($productos){
-			            foreach($productos as $key => $value){
+                        foreach($productos as $key => $value){
                             if($value['imagen']!=''){
                                 $image="<a class='nav-link' href='' onclick='show_modal_product_image(".$value['id'].");' data-toggle='modal' >
                                         <img class='img-profile rounded-square' style='width: 50px;' src='../assets/img/productos/".$value['imagen']."'>
@@ -164,7 +164,7 @@
                     $productos=ControladorFormularios::ctrListarProductos($datos);
                     $cade="";
                     if($productos){
-			            foreach($productos as $key => $value){
+                        foreach($productos as $key => $value){
                             if($value['imagen']!=''){
                                 $image="<a class='nav-link' href='' onclick='show_modal_product_image(".$value['id'].");' data-toggle='modal' >
                                         <img class='img-profile rounded-square' style='width: 50px;' src='../assets/img/productos/".$value['imagen']."'>
@@ -174,7 +174,6 @@
                                         <img class='img-profile rounded-square' style='width: 50px;' src='../assets/img/productos/image-default.png'>
                                         </a>";
                             }
-
                             $cade.="<tr>
                                         <td style='padding-left:0px; padding-right:0px; margin-right:0px'>".$image."</td>
                                         <td>".$value['producto_esp']."</td>
@@ -231,7 +230,7 @@
                     $productos=ControladorFormularios::ctrListarProductos($datos);
                     $cade="";
                     if($productos){
-			            foreach($productos as $key => $value){
+                        foreach($productos as $key => $value){
                             if($value['imagen']!=''){
                                 $image="<a class='nav-link' href='' onclick='show_modal_product_image(".$value['id'].");' data-toggle='modal' >
                                         <img class='img-profile rounded-square' style='width: 50px;' src='../assets/img/productos/".$value['imagen']."'>
@@ -297,7 +296,7 @@
                     $productos=ControladorFormularios::ctrListarProductos($datos);
                     $cade="";
                     if($productos){
-			            foreach($productos as $key => $value){
+                        foreach($productos as $key => $value){
                             if($value['imagen']!=''){
                                 $image="<a class='nav-link' href='' onclick='show_modal_product_image(".$value['id'].");' data-toggle='modal' >
                                         <img class='img-profile rounded-square' style='width: 50px;' src='../assets/img/productos/".$value['imagen']."'>
@@ -363,7 +362,7 @@
                     $productos=ControladorFormularios::ctrListarProductos($datos);
                     $cade="";
                     if($productos){
-			            foreach($productos as $key => $value){
+                        foreach($productos as $key => $value){
                             if($value['imagen']!=''){
                                 $image="<a class='nav-link' href='' onclick='show_modal_product_image(".$value['id'].");' data-toggle='modal' >
                                         <img class='img-profile rounded-square' style='width: 50px;' src='../assets/img/productos/".$value['imagen']."'>
